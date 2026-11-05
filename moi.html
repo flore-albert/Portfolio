@@ -1,68 +1,222 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio - Parcoursup</title>
+    <meta charset="UTF-8">
+    <title>Qui suis-je ?</title>
     <link rel="stylesheet" href="static/style.css">
-    <link rel="stylesheet" href="static/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/moi.css">
     <link rel="shortcut icon" href="images/logo.png">
-
 </head>
+
 <body>
-
-    <header>
-        <h1>Mon portfolio</h1>
-        <nav>
-            <a href="index.html">Accueil</a>
-            <a href="moi.html">Qui suis-je ?</a>
-            <a href="projets/projets.html">Mes projets</a>
-            
-        </nav>
-    </header>
-
-    <section>
-        <h2>Bienvenue</h2>
-        <p>
-            Bienvenue sur mon site personnel.
-            Vous y trouverez une présentation de mon parcours
-            ainsi que les projets que j’ai réalisés.
-        </p>
-    </section>
-
-
-<section>
-    <h2>Contenu du portfolio</h2>
-
-    <div class="info-grid">
-        <div>
-            <h3> Projets</h3>
-            <p>Créations artistiques et numériques réalisées en autonomie ou en cours.</p>
-        </div>
-
-        <div>
-            <h3> Carnet d’art</h3>
-            <p>Présentation de mon carnet d’arts plastiques avec une navigation interactive.</p>
-        </div>
-
-        <div>
-            <h3> Compétences</h3>
-            <p>Développement web (HTML, CSS) et démarche créative.</p>
-        </div>
+<div id="mediaModal" class="modal" onclick="closeMedia()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <img id="modalImg" style="display:none;">
+        <video id="modalVideo" controls style="display:none;"></video>
     </div>
-</section>
+</div>
+<header>
+    <h1>Qui suis-je ?</h1>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="moi.html">Qui suis-je ?</a>
+        <a href="projets/projets.html">Mes projets</a>
+        
+    </nav>
+</header>
+
+
 <section>
-    <p>
-        Ce portfolio reflète mon intérêt pour la création et mon envie de développer
-        mes compétences dans le domaine du numérique et de l’art.
+    <h2>Présentation</h2>
+    <h3 id="info-title" class="section-title"> Mode anonyme activé</h3>
+    <div id="main-private" class="private blur">
+        <p>
+        Bonjour et bienvenue sur mon portfolio.<br>
+        Je m'appelle Flore ALBERT, j'ai 17 ans et je suis originaire d'Albi.
+        Je suis lycéenne à la cité scolaire Bellevue à Albi, en terminale.
+        <br>
+        En première, j’ai choisi les spécialités Mathématiques, NSI et Arts plastiques.
+        En terminale, j’ai poursuivi avec les spécialités Mathématiques et NSI.
+        </p>
+        <p><strong>Téléphone :</strong> 07.83.87.46.65</p>
+        <p><strong>Email :</strong> flore.alb1864@gmail.com</p>
+        <p><strong>Photo :</strong></p>
+        <img src="images/moi.jpeg" alt="Photo de profil" class="profile-pic" onclick="openMedia(this)">
+        </div>
+
+        <button class="reveal-btn" onclick="toggle()">Afficher / Masquer</button>
+</section>
+    <div id="mediaModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img id="modalImg" class="modal-content">
+    </div>
+
+<script>
+function toggle() {
+    const allPrivate = document.querySelectorAll(".private");
+    const title = document.getElementById("info-title");
+
+    allPrivate.forEach(el => {
+        el.classList.toggle("blur");
+    });
+
+    if (allPrivate[0].classList.contains("blur")) {
+        title.textContent = "Mode anonyme activé";
+    } else {
+        title.textContent = "Mes informations";
+    }
+}
+
+function openMedia(element) {
+    if (element.closest(".blur")) {
+        // Ne rien faire si l'image est floutée
+        return;
+    }
+    const modal = document.getElementById("mediaModal");
+    const modalImg = document.getElementById("modalImg");
+    modal.style.display = "flex";
+    modalImg.src = element.src;
+}
+
+
+function closeModal() {
+    const modal = document.getElementById("mediaModal");
+    modal.style.display = "none";
+}
+</script>
+
+
+
+<section>
+    <h2>Mes activités sportives</h2>
+
+    <p class="activity-intro">
+        Je pratique le tumbling depuis 5 ans, après avoir fait 5 ans de gymnastique.
+        Ce sport m’a permis de développer discipline, persévérance et confiance. 
+        Je fais des compétitions en équipes de 4. Je suis au niveau fédéral, bientôt national.
+
+    </p>
+
+            <div class="video-grid">
+
+                <!-- Carte YouTube -->
+                <div class="video-card">
+            <h3>Démonstrations Tumbling Champions</h3>
+
+            <div class="youtube-grid">
+
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube-nocookie.com/embed/L6tv5zFsKDQ"
+                            title="Vidéo 1"
+                            allowfullscreen></iframe>
+                </div>
+
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube-nocookie.com/embed/_k0uDzq7GnA?si=ftGmQAnf9H3rLVFN"
+                            title="Vidéo 2"
+                            allowfullscreen></iframe>
+                </div>
+
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube-nocookie.com/embed/nE877G_ZBb8?si=aIFLRGTe4VoGeBaX"
+                            title="Vidéo 3"
+                            allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Carte Instagram -->
+        <div class="video-card">
+            <h3>Extrait Compétition Tumbling</h3>
+            <div class="instagram-wrapper">
+                <blockquote class="instagram-media"
+                    data-instgrm-permalink="https://www.instagram.com/reel/DVVq20DjBM9/"
+                    data-instgrm-version="14">
+                </blockquote>
+            </div>
+        </div>
+
+    </div>
+
+    <p class="activity-note">
+        J’ai également pratiqué le volley au collège et au lycée. J'ai aussi fait de la danse quelques années.
     </p>
 </section>
+<script>
+function openMedia(element) {
+    const modal = document.getElementById("mediaModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalVideo = document.getElementById("modalVideo");
 
+    modal.style.display = "flex";
 
+    if (element.tagName === "IMG") {
+        modalImg.src = element.src;
+        modalImg.style.display = "block";
+        modalVideo.style.display = "none";
+    }
 
+    if (element.tagName === "VIDEO") {
+        modalVideo.src = element.querySelector("source").src;
+        modalVideo.style.display = "block";
+        modalImg.style.display = "none";
+        modalVideo.play();
+    }
+}
 
-    
+function closeMedia() {
+    const modal = document.getElementById("mediaModal");
+    const modalVideo = document.getElementById("modalVideo");
+
+    modal.style.display = "none";
+    modalVideo.pause();
+    modalVideo.currentTime = 0;
+}
+</script>
+<section>
+    <h2> Mes compétences artistiques</h2>
+    <p>
+        En première, j'ai suivi l'EDS Arts-plastiques. J'adore tout ce qui est manuel. J'adore peindre, faire des tableaux, prendre
+        des photos, faire des vidéos.
+        Voici quelques exemples de ce que j'ai pu réaliser.
+    </p>
+    <div class ="photo-grid">
+
+            <div class="art-card">
+            <p>Peinture acrylique</p>
+            <img src="images/coucher_de_soleil.jpg" alt="Oeuvre 1" onclick="openMedia(this)">
+            
+        </div>
+
+        <!-- PHOTO 2 -->
+        <div class="art-card">
+            <p>Photographie artistique</p>
+            <img src="images/photo_soleil.jpg" alt="Oeuvre 2" onclick="openMedia(this)">
+            
+        </div>
+
+        <!-- PHOTO 3 -->
+        <div class="art-card">
+            <p>Projet Arts plastiques</p>
+            <img src="images/projet_artistique.jpg" alt="Oeuvre 3" onclick="openMedia(this)">
+            
+        </div>
+
+        <!-- VIDÉO -->
+        <div class="art-card">
+            <p>Projet vidéo artistique</p>
+            <video class="art-video" controls>
+                <source src="videos/1747899216_Flore_Ainhoa_Audrey_compressed.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+            
+        </div>
+
+    </div>
+</section>
+
+<script async src="//www.instagram.com/embed.js"></script>
 <footer class="main-footer">
 
     <div class="footer-container">
@@ -103,5 +257,6 @@
 
 
 </footer>
+
 </body>
-</html> 
+</html>
